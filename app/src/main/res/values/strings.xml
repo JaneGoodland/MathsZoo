@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">MathsZoo</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_number_zone">number_zone</string>
+    <string name="title_activity_animal_view">animal_view</string>
+    <string name="title_activity_zone_view">zone_view</string>
+    <string name="current_animal">NAME OF ANIMAL</string>
+    <string name="current_question">What is 1+1?</string>
+    <string name="number_animal_1">Owl</string>
+    <string name="number_animal_2">Bat</string>
+    <string name="number_animal_3">Hedgehog</string>
+    <string name="number_animal_4">Sloth</string>
+    <string name="geometry_animal_1">Tiger</string>
+    <string name="geometry_animal_2">Parrot</string>
+    <string name="geometry_animal_3">Monkey</string>
+    <string name="geometry_animal_4">Orangutan</string>
+    <string name="stats_animal_1">Elephant</string>
+    <string name="stats_animal_2">Lion</string>
+    <string name="stats_animal_3">Giraffe</string>
+    <string name="stats_animal_4">Zebra</string>
+    <string name="prob_animal_1">Rabbit</string>
+    <string name="prob_animal_2">Lamb</string>
+    <string name="prob_animal_3">Mouse</string>
+    <string name="prob_animal_4">Chick</string>
+    <string name="algebra_animal_1">Penguin</string>
+    <string name="algebra_animal_2">Polar Bear</string>
+    <string name="algebra_animal_3">Fish</string>
+    <string name="algebra_animal_4">Whale</string>
+    <string name="ratio_animal_1">Snake</string>
+    <string name="ratio_animal_2">Crocodile</string>
+    <string name="ratio_animal_3">Dinosaur</string>
+    <string name="ratio_animal_4">Turtle</string>
+</resources>

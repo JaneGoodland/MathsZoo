@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.janegoodlandmaths.www.mathszoo.ZooMap"
+    tools:showIn="@layout/activity_zoo_map">
+
+    <TextView
+        android:id="@+id/include"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="8dp"
+        android:text="Please log in"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_zoomap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zoo Map"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.146"
+        android:layout_marginRight="148dp" />
+
+    <Button
+        android:id="@+id/btn_algebra"
+        android:layout_width="125dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="110dp"
+        android:text="Algebra\nArctic"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintLeft_toRightOf="@+id/btn_number"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_geometry"
+        android:layout_width="125dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="11dp"
+        android:text="Geometry\nJungle"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bar_number" />
+
+    <Button
+        android:id="@+id/btn_stats"
+        android:layout_width="125dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="60dp"
+        android:text="Stats\nSavannah"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="0.325"
+        app:layout_constraintLeft_toRightOf="@+id/btn_geometry"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_algebra" />
+
+    <Button
+        android:id="@+id/btn_prob"
+        android:layout_width="125dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="50dp"
+        android:text="Probability\nPetting Zoo"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_geometry" />
+
+    <Button
+        android:id="@+id/btn_ratio"
+        android:layout_width="125dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="54dp"
+        android:text="Ratio\nReptile House"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintLeft_toRightOf="@+id/btn_prob"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_stats" />
+
+    <Button
+        android:id="@+id/btn_number"
+        android:layout_width="125dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:text="Number\nNight Zone"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="17dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_save" />
+
+    <ProgressBar
+        android:id="@+id/bar_algebra"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="125dp"
+        android:layout_height="41dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginTop="6dp"
+        android:max="40"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_algebra" />
+
+    <ProgressBar
+        android:id="@+id/bar_ratio"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="125dp"
+        android:layout_height="41dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginTop="1dp"
+        android:max="40"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ratio" />
+
+    <ProgressBar
+        android:id="@+id/bar_prob"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="125dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="9dp"
+        android:max="40"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_prob" />
+
+    <ProgressBar
+        android:id="@+id/bar_geometry"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="125dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="0dp"
+        android:max="40"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_geometry" />
+
+    <ProgressBar
+        android:id="@+id/bar_stats"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="125dp"
+        android:layout_height="41dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginTop="0dp"
+        android:max="40"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_stats" />
+
+    <ProgressBar
+        android:id="@+id/bar_number"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="125dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="6dp"
+        android:max="40"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_number" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="83dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="8dp"
+        android:text="LOG IN"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_number"
+        app:layout_constraintVertical_bias="0.688"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/text_zoomap"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.49" />
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="126dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="102dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintBottom_toTopOf="@+id/btn_algebra"
+        app:layout_constraintLeft_toRightOf="@+id/include"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Progress"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/text_zoomap"
+        android:layout_marginRight="8dp" />
+
+</android.support.constraint.ConstraintLayout>
