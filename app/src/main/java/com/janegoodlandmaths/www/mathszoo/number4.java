@@ -8,64 +8,40 @@ import java.util.Random;
  * Created by Jamie on 13/08/2017.
  */
 
+// TODO:
+// fractions,
+// fractions and percentages of amounts
+// amounts as fractions and percentages
+    // fdp
+    // place value/decimals
+
 public class number4 {
+
+    static int previous_i = 0;
 
     public static Pair get_question() {
         Random r = new Random();
         int i = r.nextInt(4); // exclusive
+        // make sure that i is not the same as previous i
+        while(i==previous_i) i = r.nextInt(7);
+        previous_i = i;
+        // get question and answer pair
         Pair<CharSequence, CharSequence> p;
         switch(i){
-            case 0: p = PlaceValue(); break;
-            default: p = Bidmas(); break;
+            default: p = Rubbish(); break;
         }
         return p;
     }
-    public static Pair PlaceValue() {
+
+    public static Pair Rubbish() {
         CharSequence question;
         CharSequence answer;
-        question = "What is?";
-        answer = "2";
+        question = "Questions not written yet (answer = 0)";
+        answer = "0";
         Pair<CharSequence, CharSequence> p = new Pair(question, answer);
         return p;
     }
-    public static Pair Bidmas() {
-        CharSequence question;
-        CharSequence answer;
-        Random r = new Random();
-        int i = r.nextInt(3); // exclusive
-        int a = r.nextInt(12);
-        int b = r.nextInt(12);
-        int c = r.nextInt(12);
-        int d = r.nextInt(12);
-        if(i==0) {
-            question = String.format("%d + %d x %d" ,a,b,c);
-            answer = Integer.toString(a + (b*c));
-        } else if(i==1) {
-            question = String.format("%d - %d x %d",a,b,c);
-            answer = Integer.toString(a - (b*c));
-        } else {
-            question = String.format("%d x %d + %d x %d",a,b,c,d);
-            answer = Integer.toString((a*b) + (c*d));
-        }
-        Pair<CharSequence, CharSequence> p = new Pair(question, answer);
-        return p;
-    }
-    public static Pair FractionOfAmount() {
-        CharSequence question;
-        CharSequence answer;
-        question = "What is?";
-        answer = "2";
-        Pair<CharSequence, CharSequence> p = new Pair(question, answer);
-        return p;
-    }
-    public static Pair PercentageOfAmount() {
-        CharSequence question;
-        CharSequence answer;
-        question = "What is?";
-        answer = "2";
-        Pair<CharSequence, CharSequence> p = new Pair(question, answer);
-        return p;
-    }
+
     public static Pair Estimating() {
         CharSequence question;
         CharSequence answer;
@@ -86,23 +62,4 @@ public class number4 {
         Pair<CharSequence, CharSequence> p = new Pair(question, answer);
         return p;
     }
-    public static Pair Rounding() {
-        CharSequence question;
-        CharSequence answer;
-        question = "Q - TODO?";
-        answer = "A - TODO";
-        Pair<CharSequence, CharSequence> p = new Pair(question, answer);
-        return p;
-    }
-
-    /*
-    ordering numbers including use of signs
-    the four operations
-    primes, factors, multiples
-    combinatorics
-    powers and roots
-    fractions
-    standard form
-    fdp
-     */
 }
