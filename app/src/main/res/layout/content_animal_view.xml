@@ -199,9 +199,10 @@
         android:layout_height="51dp"
         android:layout_marginStart="5dp"
         android:text="-"
-        tools:layout_editor_absoluteY="297dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_submit"
         app:layout_constraintLeft_toRightOf="@+id/ans_5"
-        android:layout_marginLeft="-5dp" />
+        android:layout_marginLeft="6dp" />
 
     <Button
         android:id="@+id/ans_6"
