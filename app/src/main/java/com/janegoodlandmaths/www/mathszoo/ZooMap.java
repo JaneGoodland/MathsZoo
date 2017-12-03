@@ -26,6 +26,8 @@ public class ZooMap extends AppCompatActivity {
         setContentView(R.layout.activity_zoo_map);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // set up global variables
         final TextView text_user = (TextView) findViewById(R.id.include);
         final EditText et_username = (EditText) findViewById(R.id.et_username);
         final String n1 = getResources().getString(R.string.number_animal_1);
@@ -53,8 +55,12 @@ public class ZooMap extends AppCompatActivity {
         final String g3 = getResources().getString(R.string.geometry_animal_3);
         final String g4 = getResources().getString(R.string.geometry_animal_4);
 
+        // look at the data that was passed here
+        // it's possible that we've only just opened the app
+        // in which case there is no data, and no-one is logged in
         Bundle extras = getIntent().getExtras();
         if(extras==null) {
+            // no-one is logged in so hunger_levels are all 0
             SharedPreferences hunger_levels = getSharedPreferences("hungers", 0);
             SharedPreferences.Editor editor = hunger_levels.edit();
             editor.putInt(n1, 0);
@@ -90,20 +96,12 @@ public class ZooMap extends AppCompatActivity {
             text_user.setText(username);
         }
 
+        // display hunger levels
+        putHungerLevelsFromSharedPreferencesIntoProgressBars(n1, n2, n3, n4,
+                a1, a2, a3, a4, g1, g2, g3, g4, s1, s2, s3, s4,
+                p1, p2, p3, p4, r1, r2, r3, r4);
 
-
-        putHungerLevelsFromSharedPreferencesIntoProgressBars(n1, n2, n3, n4, a1, a2, a3, a4, g1, g2, g3, g4,
-                s1, s2, s3, s4, p1, p2, p3, p4, r1, r2, r3, r4);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+        // set up buttons for all zones
         Button number = (Button) findViewById(R.id.btn_number);
         number.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {
@@ -114,7 +112,6 @@ public class ZooMap extends AppCompatActivity {
                     Bundle extras = new Bundle();
                     extras.putString("zone_name", "number");
                     extras.putString("username", username.toString());
-                    // extras.putString("next key","next value");
                     intent.putExtras(extras);
                     startActivity(intent);
                 }
@@ -196,6 +193,7 @@ public class ZooMap extends AppCompatActivity {
             }
         });
 
+        // set up a button for "save to database" for this user
         Button save = (Button) findViewById(R.id.btn_save);
         save.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {
@@ -235,13 +233,17 @@ public class ZooMap extends AppCompatActivity {
                         values,
                         selection,
                         selectionArgs);
-            }});
+            }
+        });
+
+        // if someone clicks in the username box, the text should go blank:
         final EditText new_username = (EditText) findViewById(R.id.et_username);
         new_username.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {
                 new_username.setText("");
             }
         });
+        // if someone clicks on the login button, log them in
         Button login = (Button)findViewById(R.id.btn_login);
         login.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {
@@ -398,11 +400,22 @@ public class ZooMap extends AppCompatActivity {
                     editor.putInt(s3, 0);
                     editor.putInt(s4, 0);
                     editor.commit();
-                    putHungerLevelsFromSharedPreferencesIntoProgressBars(n1, n2, n3, n4, a1, a2, a3, a4, g1, g2, g3, g4,
+                    putHungerLevelsFromSharedPreferencesIntoProgressBars(
+                            n1, n2, n3, n4, a1, a2, a3, a4, g1, g2, g3, g4,
                             s1, s2, s3, s4, p1, p2, p3, p4, r1, r2, r3, r4);
                 }
                 cursor.close();
 
+            }
+        });
+
+        // DOES NOTHING:
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
     }
@@ -434,41 +447,6 @@ public class ZooMap extends AppCompatActivity {
         bar_g.setProgress(g_val);
         bar_s.setProgress(s_val);
     }
-    private void putHungerLevelsFromSharedPreferencesIntoDatabase(
-            String n1, String n2, String n3, String n4,
-            String a1, String a2, String a3, String a4,
-            String g1, String g2, String g3, String g4,
-            String s1, String s2, String s3, String s4,
-            String p1, String p2, String p3, String p4,
-            String r1, String r2, String r3, String r4) {
-        SharedPreferences h = getSharedPreferences("hungers", 0);
-        int[][] hungers = new int[6][4];
-        hungers[0][0] = h.getInt(n1,0);
-        hungers[0][1] = h.getInt(n2,0);
-        hungers[0][2] = h.getInt(n3,0);
-        hungers[0][3] = h.getInt(n4,0);
-        hungers[1][0] = h.getInt(a1,0);
-        hungers[1][1] = h.getInt(a2,0);
-        hungers[1][2] = h.getInt(a3,0);
-        hungers[1][3] = h.getInt(a4,0);
-        hungers[2][0] = h.getInt(p1,0);
-        hungers[2][1] = h.getInt(p2,0);
-        hungers[2][2] = h.getInt(p3,0);
-        hungers[2][3] = h.getInt(p4,0);
-        hungers[3][0] = h.getInt(g1,0);
-        hungers[3][1] = h.getInt(g2,0);
-        hungers[3][2] = h.getInt(g3,0);
-        hungers[3][3] = h.getInt(g4,0);
-        hungers[4][0] = h.getInt(r1,0);
-        hungers[4][1] = h.getInt(r2,0);
-        hungers[4][2] = h.getInt(r3,0);
-        hungers[4][3] = h.getInt(r4,0);
-        hungers[5][0] = h.getInt(s1,0);
-        hungers[5][1] = h.getInt(s2,0);
-        hungers[5][2] = h.getInt(s3,0);
-        hungers[5][3] = h.getInt(s4,0);
-        // todo put hungers array into database
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -483,12 +461,10 @@ public class ZooMap extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

@@ -20,11 +20,13 @@ public class zone_view extends AppCompatActivity {
         setContentView(R.layout.activity_zone_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        // get the data that was passed here from the previous screen
+        // username and zone name
         Bundle extras = getIntent().getExtras();
         final String username = extras.getString("username");
-        TextView text_user = (TextView) findViewById(R.id.text_user_zone);
-        text_user.setText(username);
         final String zone_name = extras.getString("zone_name");
+        // set up global variables
+        TextView text_user = (TextView) findViewById(R.id.text_user_zone);
         TextView tv1 = (TextView) findViewById(R.id.btn_animal1);
         TextView tv2 = (TextView) findViewById(R.id.btn_animal2);
         TextView tv3 = (TextView) findViewById(R.id.btn_animal3);
@@ -34,6 +36,9 @@ public class zone_view extends AppCompatActivity {
         final String animal_2_name;
         final String animal_3_name;
         final String animal_4_name;
+        // fill in text boxes with relevant username, zone name and animal name
+        text_user.setText(username);
+        t_name.setText(zone_name+ " zone");
         if(zone_name.equals("number")){
             animal_1_name = getResources().getString(R.string.number_animal_1);
             animal_2_name = getResources().getString(R.string.number_animal_2);
@@ -74,7 +79,8 @@ public class zone_view extends AppCompatActivity {
         tv2.setText(animal_2_name);
         tv3.setText(animal_3_name);
         tv4.setText(animal_4_name);
-        t_name.setText(zone_name+ " zone");
+
+        // get the hunger levels and update them:
         SharedPreferences hunger_levels = getSharedPreferences("hungers", 0);
         int hunger_val_1 = hunger_levels.getInt(animal_1_name,0);
         int hunger_val_2 = hunger_levels.getInt(animal_2_name,0);
@@ -89,15 +95,7 @@ public class zone_view extends AppCompatActivity {
         hunger3.setProgress(hunger_val_3);
         hunger4.setProgress(hunger_val_4);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+        // set up buttons for each animal, and a back button
         Button animal1 = (Button) findViewById(R.id.btn_animal1);
         animal1.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {
@@ -154,6 +152,16 @@ public class zone_view extends AppCompatActivity {
                 extras.putString("username", username);
                 intent.putExtras(extras);
                 startActivity(intent);
+            }
+        });
+
+        // does nothing
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
     }

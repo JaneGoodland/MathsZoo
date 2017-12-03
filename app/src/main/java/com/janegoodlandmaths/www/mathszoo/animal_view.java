@@ -16,49 +16,50 @@ import android.widget.TextView;
 
 public class animal_view extends AppCompatActivity {
 
-    Pair <CharSequence,CharSequence> p; // TODO this is not working
+    Pair <CharSequence,CharSequence> p;
     CharSequence curr_answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //Pair <CharSequence,CharSequence> p; // TODO this is not working
-        //CharSequence curr_answer;
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        // obtain data passed through from previous activity
+        // username, zone_name and animal_name for this zone/animal
         Bundle extras = getIntent().getExtras();
         final String animal_name = extras.getString("key1");
         final String zone_name = extras.getString("zone_name");
         final String username = extras.getString("username");
+        // set username
         final TextView text_user = (TextView) findViewById(R.id.text_user_animal);
         text_user.setText(username);
+        // declare text boxes, buttons and global variables
+        TextView tv = (TextView) findViewById(R.id.text_animal_name);
+        TextView t_name = (TextView) findViewById(R.id.text_parent_zone);
+        Button back_to_zoo_map = (Button) findViewById(R.id.btn_back_to_map);
+        Button back_to_zone = (Button) findViewById(R.id.btn_back_to_zone);
+        final Button submit = (Button) findViewById(R.id.btn_submit);
+        final TextView correct_message = (TextView) findViewById(R.id.label_correct);
+        final EditText answer = (EditText) findViewById(R.id.txt_answer);
+        answer.setEnabled(false); // can only edit the answer using the buttons
+        // set animal and zone names
+        tv.setText(animal_name);
+        t_name.setText(zone_name+" zone");
+        back_to_zone.setText("Back to "+zone_name+" zone");
+        // obtain question and answer (depending on zone/animal)
         final TextView text_question = (TextView) findViewById(R.id.label_question);
         p = get_question_and_answer_pair(animal_name);
         text_question.setText(p.first);
         curr_answer = p.second;
-        TextView tv = (TextView) findViewById(R.id.text_animal_name);
-        TextView t_name = (TextView) findViewById(R.id.text_parent_zone);
-        Button back_to_zone = (Button) findViewById(R.id.btn_back_to_zone);
-        tv.setText(animal_name);
-        t_name.setText(zone_name+" zone");
-        back_to_zone.setText("Back to "+zone_name+" zone");
+        // set hunger levels (based on which animal it is)
         SharedPreferences hunger_levels = getSharedPreferences("hungers", 0);
         int hunger_val = hunger_levels.getInt(animal_name,0);
         final ProgressBar hunger = (ProgressBar) findViewById(R.id.bar_hunger);
         hunger.setProgress(hunger_val);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Hello!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        Button back_to_zoo_map = (Button) findViewById(R.id.btn_back_to_map);
+        // set up back buttons:
         back_to_zoo_map.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {
                 Intent intent = new Intent(animal_view.this, ZooMap.class);
@@ -78,11 +79,8 @@ public class animal_view extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        final EditText answer = (EditText) findViewById(R.id.txt_answer);
-        answer.setEnabled(false);
-        final Button submit = (Button) findViewById(R.id.btn_submit);
-        final TextView correct_message = (TextView) findViewById(R.id.label_correct);
 
+        // set up a submit button
         submit.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View v) {
                 CharSequence answer_text = answer.getText();
@@ -273,8 +271,17 @@ public class animal_view extends AppCompatActivity {
                 }
                 answer.setText(answer_so_far);
                 correct_message.setText("");
+            };
+        });
+
+        // this does nothing
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Hello!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
-            ;
         });
     }
 

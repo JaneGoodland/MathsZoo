@@ -10,15 +10,15 @@ import java.util.Random;
 
 public class number2 {
 
-    // TODO:
-    // - add an internal static variable that indicates what question you just
-    // had to make sure you don't get the same one twice in a row
-    // - make sure that 0 is removed from some of the questions, particularly
-    // if it will result in a divide by 0 error (e.g. %)
+    static int previous_i = 0;
 
     public static Pair get_question() {
         Random r = new Random();
         int i = r.nextInt(7); // exclusive
+        // make sure that i is not the same as previous i
+        while(i==previous_i) i = r.nextInt(7);
+        previous_i = i;
+        // get question and answer pair
         Pair<CharSequence, CharSequence> p;
         switch(i){
             case 0: p = Primes(); break;
@@ -36,7 +36,7 @@ public class number2 {
         CharSequence question;
         CharSequence answer;
         Random r = new Random();
-        int a = r.nextInt(20); // exclusive
+        int a = r.nextInt(20)+1; // exclusive
         question = String.format("True or False: %d is a prime number.",a);
         answer = "True";
         if(a%2==0) answer = "False";
@@ -51,8 +51,8 @@ public class number2 {
         CharSequence question;
         CharSequence answer;
         Random r = new Random();
-        int a = r.nextInt(11);
-        int b = r.nextInt(31);
+        int a = r.nextInt(10)+1;
+        int b = r.nextInt(30)+1;
         question = String.format("True or False: %d is a factor of %d.",a,b);
         answer = (b%a==0) ? "True" : "False";
         Pair<CharSequence, CharSequence> p = new Pair(question, answer);
@@ -63,8 +63,8 @@ public class number2 {
         CharSequence question;
         CharSequence answer;
         Random r = new Random();
-        int a = r.nextInt(11);
-        int b = r.nextInt(31);
+        int a = r.nextInt(10)+1;
+        int b = r.nextInt(30)+1;
         question = String.format("True or False: %d is a multiple of %d.",b,a);
         answer = (b%a==0) ? "True" : "False";
         Pair<CharSequence, CharSequence> p = new Pair(question, answer);
@@ -75,8 +75,8 @@ public class number2 {
         CharSequence question;
         CharSequence answer;
         Random r = new Random();
-        int a = r.nextInt(6);
-        int b = r.nextInt(6);
+        int a = r.nextInt(5)+1;
+        int b = r.nextInt(4)+1;
         question = String.format("Calc allowed: What is %d to the power %d?",a,b);
         double double_result = java.lang.Math.pow(a,b);
         int result = (int) double_result;
@@ -88,7 +88,7 @@ public class number2 {
         CharSequence question;
         CharSequence answer;
         Random r = new Random();
-        int a = r.nextInt(11);
+        int a = r.nextInt(10)+1;
         question = String.format("What is %d squared?",a);
         double double_result =java.lang.Math.pow(a,2);
         int result = (int) double_result;
@@ -100,7 +100,7 @@ public class number2 {
         CharSequence question;
         CharSequence answer;
         Random r = new Random();
-        int a = r.nextInt(6);
+        int a = r.nextInt(5)+1;
         question = String.format("What is %d cubed?", a);
         double double_result = java.lang.Math.pow(a,3);
         int result = (int) double_result;
@@ -112,7 +112,7 @@ public class number2 {
         CharSequence question;
         CharSequence answer;
         Random r = new Random();
-        int a = r.nextInt(11);
+        int a = r.nextInt(10)+1;
         double double_b = java.lang.Math.pow(a, 2);
         int b = (int) double_b;
         question = String.format("What is the square root of %d?", b);
@@ -125,7 +125,7 @@ public class number2 {
         CharSequence question;
         CharSequence answer;
         Random r = new Random();
-        int a = r.nextInt(6);
+        int a = r.nextInt(5)+1;
         double double_b = java.lang.Math.pow(a, 3);
         int b = (int) double_b;
         question = String.format("What is the cube root of %d?", b);

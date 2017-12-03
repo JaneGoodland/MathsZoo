@@ -10,9 +10,15 @@ import java.util.Random;
 
 public class number1 {
 
+    static int previous_i = 0;
+
     public static Pair get_question() {
         Random r = new Random();
         int i = r.nextInt(4); // exclusive
+        // make sure that i is not the same as previous i
+        while(i==previous_i) i = r.nextInt(7);
+        previous_i = i;
+        // get question and answer pair
         Pair<CharSequence, CharSequence> p;
         switch(i){
             case 0: p = Arithmetic(); break;
@@ -27,10 +33,10 @@ public class number1 {
         CharSequence answer;
         Random r = new Random();
         int i = r.nextInt(3); // exclusive
-        int a = r.nextInt(12);
-        int b = r.nextInt(12);
-        int c = r.nextInt(12);
-        int d = r.nextInt(12);
+        int a = r.nextInt(11)+1;
+        int b = r.nextInt(11)+1;
+        int c = r.nextInt(11)+1;
+        int d = r.nextInt(11)+1;
         switch(i) {
             case 0: {
                 question = String.format("%d + %d x %d", a, b, c);
@@ -56,8 +62,8 @@ public class number1 {
         CharSequence answer;
         Random r = new Random();
         int i = r.nextInt(4); // exclusive
-        int a = r.nextInt(60);
-        int b = r.nextInt(60);
+        int a = r.nextInt(59)+1;
+        int b = r.nextInt(59)+1;
         switch(i) {
             case 0: {
                 question = String.format("Non-calc: %d + %d", a, b);
@@ -88,10 +94,6 @@ public class number1 {
         CharSequence answer;
         Random r = new Random();
         int i = r.nextInt(3); // exclusive
-        int a = r.nextInt(12);
-        int b = r.nextInt(12);
-        int c = r.nextInt(12);
-        int d = r.nextInt(12);
         switch(i) {
             case 0: {
                 question = "How many ways are there to choose two different " +
